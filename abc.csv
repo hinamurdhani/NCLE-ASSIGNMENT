@@ -1,0 +1,124 @@
+id,title,description,preconditions,postconditions,tags,priority,severity,automation,steps_type,steps_actions,steps_result,steps_data,milestone_id,milestone
+1,Quick Baseline Performance Test for GET /users,Establish a baseline for system performance under normal load.,JMeter is installed and configured. The test environment is ready.,,load-testing,High,Normal,JMeter,,"1. Open JMeter
+2. Create a new Thread Group
+3. Set Number of Threads (users) to 50
+4. Set Ramp-up period to 30 seconds
+5. Set Loop Count to Forever
+6. Add HTTP Request sampler
+7. Set Method to GET
+8. Set Path to /users
+9. Add View Results Tree listener
+10. Add Aggregate Report listener
+11. Add Response Time Graph listener
+12. Run the test for 5 minutes
+13. Analyze the results","1. JMeter application opens successfully
+2. New Thread Group is created in the test plan
+3. Number of Threads (users) is set to 50
+4. Ramp-up period is set to 30 seconds
+5. Loop Count is set to Forever
+6. HTTP Request sampler is added to the Thread Group
+7. Method is set to GET in the HTTP Request sampler
+8. Path is set to /users in the HTTP Request sampler
+9. View Results Tree listener is added to the test plan
+10. Aggregate Report listener is added to the test plan
+11. Response Time Graph listener is added to the test plan
+12. Test runs for 5 minutes without errors
+13. Results show:
+    - Average response time
+    - Throughput (requests/second)
+    - Error rate (if any)
+    - Response time distribution in the graph",Concurrent Users: 50; Duration: 5 minutes; URL: https://api.github.com/users,,
+2,Quick Gradual Load Increase Test for GET /users,Gradually increase the load to identify performance trends.,JMeter is installed and configured. The test environment is ready.,,load-testing,High,Normal,JMeter,,"1. Open JMeter
+2. Install Stepping Thread Group plugin
+3. Create a Stepping Thread Group
+4. Set Start threads count to 10
+5. Set Initial delay to 0
+6. Set Increment to 10
+7. Set Increment every to 60 seconds (1 minute)
+8. Set Hold load for to 30 seconds
+9. Set Stop count to 100
+10. Add HTTP Request sampler (same as Test Case 1)
+11. Add listeners (same as Test Case 1)
+12. Run the test
+13. Analyze the results","1. JMeter application opens successfully
+2. Stepping Thread Group plugin is installed successfully
+3. Stepping Thread Group is created in the test plan
+4. Start threads count is set to 10
+5. Initial delay is set to 0
+6. Increment is set to 10
+7. Increment every is set to 60 seconds
+8. Hold load for is set to 30 seconds
+9. Stop count is set to 100
+10. HTTP Request sampler is added with correct settings
+11. All listeners are added correctly
+12. Test runs for about 10 minutes without errors
+13. Results show:
+    - How response times change as user count increases
+    - Any points where performance significantly degrades
+    - Error rates at different user loads
+    - Throughput changes throughout the test",Initial Users: 10; Final Users: 100; Duration: ~10 minutes; URL: https://api.github.com/users,,
+3,Quick Spike Test for GET /users,Simulate a brief traffic spike to test system response.,JMeter is installed and configured. The test environment is ready.,,load-testing,High,Normal,JMeter,,"1. Open JMeter
+2. Create three Thread Groups:
+   a. First group: 20 users for 1 minute
+   b. Second group: 200 users for 1 minute
+   c. Third group: 20 users for 1 minute
+3. Use Synchronizing Timer for the second group
+4. Add HTTP Request sampler (same as Test Case 1)
+5. Add listeners (same as Test Case 1)
+6. Run the test
+7. Analyze the results","1. JMeter application opens successfully
+2. Three Thread Groups are created with correct settings:
+   a. First group set to 20 users for 1 minute
+   b. Second group set to 200 users for 1 minute
+   c. Third group set to 20 users for 1 minute
+3. Synchronizing Timer is added to the second group
+4. HTTP Request sampler is added to all groups with correct settings
+5. All listeners are added correctly to each group
+6. Test runs for 3 minutes without errors
+7. Results show:
+   - Response times before, during, and after the spike
+   - Error rates during the spike
+   - How quickly the system returns to baseline performance
+   - Any failures or timeouts during the spike",Base Users: 20; Spike Users: 200; Duration: 3 minutes; URL: https://api.github.com/users,,
+4,Quick Endurance Test for GET /users,Test system stability over a short extended period.,JMeter is installed and configured. The test environment is ready.,,load-testing,Medium,Normal,JMeter,,"1. Open JMeter
+2. Create a Thread Group
+3. Set Number of Threads (users) to 100
+4. Set Ramp-up period to 60 seconds
+5. Set Loop Count to calculate 15 minutes duration
+6. Add HTTP Request sampler (same as Test Case 1)
+7. Add listeners (same as Test Case 1)
+8. Run the test
+9. Analyze the results","1. JMeter application opens successfully
+2. Thread Group is created in the test plan
+3. Number of Threads (users) is set to 100
+4. Ramp-up period is set to 60 seconds
+5. Loop Count is set correctly to run for 15 minutes
+6. HTTP Request sampler is added with correct settings
+7. All listeners are added correctly
+8. Test runs for 15 minutes without interruption
+9. Results show:
+   - Consistency of response times over the 15-minute period
+   - Any gradual increase in response times
+   - Error rates and if they remain constant
+   - Throughput stability over time",Concurrent Users: 100; Duration: 15 minutes; URL: https://api.github.com/users,,
+5,Quick Concurrent API Calls Test for GET /users,Test system behavior with brief bursts of concurrent requests.,JMeter is installed and configured. The test environment is ready.,,load-testing,Medium,Normal,JMeter,,"1. Open JMeter
+2. Create a Thread Group with 100 users
+3. Add a Loop Controller set to 5 iterations
+4. Add HTTP Request sampler inside the Loop Controller
+5. Set Method to GET and Path to /users
+6. Add Constant Timer with 100ms delay
+7. Add listeners (same as Test Case 1)
+8. Run the test for 5 minutes
+9. Analyze the results","1. JMeter application opens successfully
+2. Thread Group is created with 100 users
+3. Loop Controller is added and set to 5 iterations
+4. HTTP Request sampler is added inside the Loop Controller
+5. Method is set to GET and Path to /users in the HTTP Request sampler
+6. Constant Timer is added with 100ms delay
+7. All listeners are added correctly
+8. Test runs for 5 minutes without errors
+9. Results show:
+   - Response times for each request in the sequence of 5
+   - Any degradation in performance for later requests in the sequence
+   - Error rates for concurrent requests
+   - Overall system throughput during burst periods",Concurrent Users: 100; Requests per User: 5; Duration: 5 minutes; URL: https://api.github.com/users,,

@@ -1,0 +1,8 @@
+node_modules/
+/test-results/
+/playwright-report/
+/Reports/
+test-results/
+package-lock.json
+Reports/index.html
+.env

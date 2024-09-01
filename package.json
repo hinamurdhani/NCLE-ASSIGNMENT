@@ -1,0 +1,17 @@
+{
+  "name": "ncle-assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test -g '@userTokeneTest' --project=chromium"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.1",
+    "dotenv": "^16.4.5"
+  }
+}
